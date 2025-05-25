@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<!-- Events Related Question Most Asked-->
+
+<body class="bg-gray-50 font-sans">
+    <div class="max-w-4xl mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center text-blue-800 mb-8">
+            JavaScript Events – Interview Questions
+        </h1>
+
+        <!-- Q-1 -->
+        <div class="bg-white border-l-4 border-blue-500 shadow-md rounded-md p-6 mb-6">
+            <h2 class="text-xl font-bold text-blue-700 mb-2">
+                Q-1: What is an event in JavaScript? Explain with example
+            </h2>
+            <p class="text-gray-700 leading-relaxed">
+                An <span class="font-semibold">event</span> in JavaScript is an action that occurs in the browser,
+                usually triggered by the user such as clicking a button, typing in an input box, scrolling, etc.
+                JavaScript allows you to handle these events and define what should happen when they occur.
+            </p>
+
+            <div class="mt-4">
+                <h3 class="text-md font-semibold text-gray-800 mb-2">📌 Example:</h3>
+                <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto">
+<code>&lt;button onclick="greet()"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  function greet() {
+    alert("Hello Rishikesh!");
+  }
+&lt;/script&gt;
+</code>
+        </pre>
+            </div>
+        </div>
+
+        <!-- Q-2 -->
+        <div class="bg-white border-l-4 border-purple-500 shadow-md rounded-md p-6 mb-6">
+            <h2 class="text-xl font-bold text-purple-700 mb-2">
+                Q-2: What is Event Bubbling in JavaScript? Explain with impressive example
+            </h2>
+            <p class="text-gray-700 leading-relaxed">
+                <strong>Event bubbling</strong> is when an event triggered on a nested (child) element
+                bubbles up to its parent elements. This allows handling events higher up in the DOM tree,
+                which is useful in dynamic UIs.
+            </p>
+
+            <div class="mt-4">
+                <h3 class="text-md font-semibold text-gray-800 mb-2">📌 Real-World Example: Delete cards using bubbling
+                </h3>
+                <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto">
+<code>&lt;div id="cardContainer"&gt;
+  &lt;div class="card"&gt;
+    &lt;p&gt;Card 1&lt;/p&gt;
+    &lt;button class="deleteBtn"&gt;Delete&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="card"&gt;
+    &lt;p&gt;Card 2&lt;/p&gt;
+    &lt;button class="deleteBtn"&gt;Delete&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  document.getElementById(\"cardContainer\").addEventListener(\"click\", function(e) {
+    if (e.target.classList.contains(\"deleteBtn\")) {
+      e.target.parentElement.remove(); // remove entire card
+      console.log(\"Card deleted via bubbling\");
+    }
+  });
+&lt;/script&gt;
+</code>
+    </pre>
+            </div>
+
+            <div class="mt-2 text-gray-700">
+                <p><strong>🧠 Why this impresses interviewers:</strong></p>
+                <ul class="list-disc list-inside mt-1">
+                    <li>Uses <strong>event delegation</strong> via bubbling</li>
+                    <li>Efficient: only one listener for many delete buttons</li>
+                    <li>Scalable: handles dynamically added cards too</li>
+                    <li>Demonstrates real-world skill in UI logic</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Q-2.1 -->
+        <div class="bg-white border-l-4 border-indigo-500 shadow-md rounded-md p-6 mb-6">
+            <h2 class="text-xl font-bold text-indigo-700 mb-2">
+                Q-2.1: Show Event Bubbling with Parent → Middle → Child structure
+            </h2>
+            <p class="text-gray-700 leading-relaxed">
+                In this example, we have a <strong>parent</strong> div containing a <strong>middle</strong> div, which
+                contains a <strong>child</strong> button.
+                When you click the child button, all event listeners fire in bubbling order (from child to parent).
+            </p>
+
+            <div class="mt-4">
+                <h3 class="text-md font-semibold text-gray-800 mb-2">📌 Example:</h3>
+                <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto">
+<code>&lt;div id="parent" style="padding: 20px; background: lightblue;"&gt;
+  Parent
+  &lt;div id="middle" style="padding: 20px; background: lightgreen;"&gt;
+    Middle
+    &lt;button id="child" style="padding: 10px;"&gt;Click Me&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  document.getElementById(\"parent\").addEventListener(\"click\", function() {
+    console.log(\"Parent clicked\");
+  });
+
+  document.getElementById(\"middle\").addEventListener(\"click\", function() {
+    console.log(\"Middle clicked\");
+  });
+
+  document.getElementById(\"child\").addEventListener(\"click\", function() {
+    console.log(\"Child clicked\");
+  });
+&lt;/script&gt;
+</code>
+    </pre>
+            </div>
+
+            <div class="mt-2 text-gray-700">
+                <p><strong>🧠 Output when clicking the button:</strong></p>
+                <ul class="list-decimal list-inside mt-1">
+                    <li>Child clicked</li>
+                    <li>Middle clicked</li>
+                    <li>Parent clicked</li>
+                </ul>
+                <p class="mt-2">
+                    This shows the <strong>natural bubbling order</strong>: from child to middle to parent.
+                    It's great for handling nested UI interactions efficiently.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- Q-3 -->
+        <div class="bg-white border-l-4 border-yellow-500 shadow-md rounded-md p-6 mb-6">
+            <h2 class="text-xl font-bold text-yellow-700 mb-2">
+                Q-3: What is Event Capturing in JavaScript? Show with example
+            </h2>
+            <p class="text-gray-700 leading-relaxed">
+                <strong>Event Capturing</strong> (also called trickling) means the event travels from the outermost
+                element
+                (document → parent) down to the target element. You can enable capturing by passing <code>true</code>
+                as the third argument in <code>addEventListener</code>.
+            </p>
+
+            <div class="mt-4">
+                <h3 class="text-md font-semibold text-gray-800 mb-2">📌 Capturing Example:</h3>
+                <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto">
+<code>&lt;div id="parent" style="padding: 20px; background: lightcoral;"&gt;
+  Parent
+  &lt;div id="middle" style="padding: 20px; background: lightsalmon;"&gt;
+    Middle
+    &lt;button id="child" style="padding: 10px;"&gt;Click Me&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  document.getElementById(\"parent\").addEventListener(\"click\", () => {
+    console.log(\"Parent capturing\");
+  }, true); // Capturing
+
+  document.getElementById(\"middle\").addEventListener(\"click\", () => {
+    console.log(\"Middle capturing\");
+  }, true); // Capturing
+
+  document.getElementById(\"child\").addEventListener(\"click\", () => {
+    console.log(\"Child clicked\");
+  });
+&lt;/script&gt;
+</code>
+    </pre>
+            </div>
+
+            <div class="mt-2 text-gray-700">
+                <p><strong>🧠 Output when clicking the button:</strong></p>
+                <ul class="list-decimal list-inside mt-1">
+                    <li>Parent capturing</li>
+                    <li>Middle capturing</li>
+                    <li>Child clicked</li>
+                </ul>
+                <p class="mt-2">
+                    This demonstrates the <strong>capturing flow</strong>: from outer to inner before reaching the
+                    target.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- Q-4 -->
+        <div class="bg-white border-l-4 border-rose-500 shadow-md rounded-md p-6 mb-6">
+            <h2 class="text-xl font-bold text-rose-700 mb-2">
+                Q-4: What is Event Delegation in JavaScript? Give a real-world example
+            </h2>
+            <p class="text-gray-700 leading-relaxed">
+                <strong>Event delegation</strong> is a technique in which a single event listener is added to a parent
+                element
+                to handle events on its child elements. It works using <strong>event bubbling</strong> and improves
+                performance and flexibility.
+            </p>
+
+            <div class="mt-4">
+                <h3 class="text-md font-semibold text-gray-800 mb-2">📌 Example: Delete list items using delegation</h3>
+                <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto">
+<code>&lt;ul id="taskList"&gt;
+  &lt;li&gt;Task 1 &lt;button class="deleteBtn"&gt;Delete&lt;/button&gt;&lt;/li&gt;
+  &lt;li&gt;Task 2 &lt;button class="deleteBtn"&gt;Delete&lt;/button&gt;&lt;/li&gt;
+  &lt;li&gt;Task 3 &lt;button class="deleteBtn"&gt;Delete&lt;/button&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+  document.getElementById(\"taskList\").addEventListener(\"click\", function(e) {
+    if (e.target.classList.contains(\"deleteBtn\")) {
+      e.target.parentElement.remove(); // Delete the list item
+      console.log(\"Task removed using event delegation\");
+    }
+  });
+&lt;/script&gt;
+</code>
+    </pre>
+            </div>
+
+
+        </div>
+
+
+
+        <!-- Q-5 -->
+        <div class="bg-white border-l-4 border-green-500 shadow-md rounded-md p-6 mb-6">
+            <h2 class="text-xl font-bold text-green-700 mb-2">
+                Q-5: How many types of JavaScript events are there? Explain with examples
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                JavaScript provides many types of events based on user interaction and browser activity. Here's a
+                categorized list with real examples:
+            </p>
+
+            <ul class="space-y-4 text-gray-700">
+
+                <!-- 1. Mouse Events -->
+                <li>
+                    <strong class="text-green-600">1. Mouse Events:</strong> <br>
+                    <code>click, dblclick, mousedown, mouseup, mousemove, mouseover, mouseout</code>
+                    <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto mt-2">
+<code>&lt;button onclick="alert('Clicked!')"&gt;Click Me&lt;/button&gt;</code>
+      </pre>
+                </li>
+
+                <!-- 2. Keyboard Events -->
+                <li>
+                    <strong class="text-green-600">2. Keyboard Events:</strong> <br>
+                    <code>keydown, keyup, keypress</code>
+                    <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto mt-2">
+<code>&lt;input type="text" onkeydown="console.log('Key pressed')" placeholder="Type here"&gt;</code>
+      </pre>
+                </li>
+
+                <!-- 3. Form Events -->
+                <li>
+                    <strong class="text-green-600">3. Form Events:</strong> <br>
+                    <code>submit, change, focus, blur, input</code>
+                    <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto mt-2">
+<code>&lt;form onsubmit="event.preventDefault(); alert('Form submitted!')"&gt;
+  &lt;input type="text" name="name"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code>
+      </pre>
+                </li>
+
+                <!-- 4. Window Events -->
+                <li>
+                    <strong class="text-green-600">4. Window Events:</strong> <br>
+                    <code>load, resize, scroll, unload</code>
+                    <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto mt-2">
+<code>&lt;script&gt;
+  window.addEventListener("resize", () => {
+    console.log("Window resized");
+  });
+&lt;/script&gt;</code>
+      </pre>
+                </li>
+
+                <!-- 5. Clipboard Events -->
+                <li>
+                    <strong class="text-green-600">5. Clipboard Events:</strong> <br>
+                    <code>copy, cut, paste</code>
+                    <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto mt-2">
+<code>&lt;input onpaste="alert('Pasted!')" placeholder="Try pasting something"&gt;</code>
+      </pre>
+                </li>
+
+                <!-- 6. Media Events -->
+                <li>
+                    <strong class="text-green-600">6. Media Events:</strong> <br>
+                    <code>play, pause, ended, volumechange</code>
+                    <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto mt-2">
+<code>&lt;video controls onplay="console.log('Video playing')" width="300"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code>
+      </pre>
+                </li>
+
+                <!-- 7. Drag Events -->
+                <li>
+                    <strong class="text-green-600">7. Drag and Drop Events:</strong> <br>
+                    <code>dragstart, drag, dragover, drop, dragend</code>
+                    <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto mt-2">
+<code>&lt;div draggable="true" ondragstart="console.log('Drag started')" style="width:100px;height:100px;background:#ccc;"&gt;
+  Drag me
+&lt;/div&gt;</code>
+      </pre>
+                </li>
+
+                <!-- 8. Focus Events -->
+                <li>
+                    <strong class="text-green-600">8. Focus Events:</strong> <br>
+                    <code>focus, blur</code>
+                    <pre class="bg-gray-900 text-green-200 text-sm rounded-md p-4 overflow-x-auto mt-2">
+<code>&lt;input onfocus="console.log('Focused!')" onblur="console.log('Blurred!')" placeholder="Focus me"&gt;</code>
+      </pre>
+                </li>
+
+            </ul>
+
+            <div class="mt-6 text-gray-700">
+                <strong>🧠 Interview Tip:</strong> Grouping event types by category (Mouse, Keyboard, Form, Window,
+                etc.) helps structure your answers better and shows you're organized in your understanding.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- OUR CODE PRACTICE-->
+    <div class="bg-gray-800 flex items-center justify-center min-h-screen w-full">
+        <div id="divElement" class="bg-gray-500 rounded-md w-80 p-4">
+            <input type="text" id="inputBox" class="outline-none px-4 py-3 bg-gray-200 w-full rounded-3xl mb-5"
+                placeholder="Type in an input and shwo live text">
+            <p id="outputBoxDesign" class="bg-gray-200 rounded-md p-4 text-center">
+                👈 Your text will appear here <br>
+                <span id="liveInputText" class="text-red-500 inline-block mb-5">Input Charecter : </span> <br>
+                <span id="charecterCount" class="text-red-500">Input Charecter Count : </span>
+            </p>
+            <hr class="mb-8 mt-10">
+        </div>
+    </div>
+
+
+    <script src="events.js"></script>
+</body>
+
+</html>
